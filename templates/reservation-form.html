@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Carrera Auto | Reservation </title>
+
+	
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css777/bootstrap.min.css' %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css777/style.css' %}" />
+
+	<link rel="shortcut icon" href="{% static '/carrera.ico' %}" type="image/x-icon">
+	<link rel="icon" href="{% static '/carrera.ico' %}" type="image/x-icon">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		  <!-- Responsive -->
+		  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		  
+		  
+		  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+		  <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+		  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="6f9d3322-d60c-4a37-acda-4ef264abc6fc";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+</head>
+
+<body>
+
+
+	
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form method="POST" action="{% url 'reservation_form' %}" >
+							{% csrf_token %}
+							<div class="form-group">
+								{% for x in messages %}
+								<h3 style="color:green;">{{x}}</h3>
+								{% endfor %}
+
+
+								{% comment %} <span class="form-label">Transmission</span> {% endcomment %}
+								{% comment %} <div class="form-checkbox">
+									<label for="roundtrip">
+										<input type="radio" id="roundtrip" name="automatic">
+										<span></span>Automatic
+									</label>
+									<label for="one-way">
+										<input type="radio" id="one-way" name="manual">
+										<span></span>Manual
+									</label>
+								</div> {% endcomment %}
+							</div>
+							<div  class="row">
+								<div hidden class="col-md-3">
+									<div class="form-group">
+										<span class="form-label"></span>
+										<textarea name="check_username" class="form-control" type="t" placeholder="">{{request.user.username}}</textarea>
+									</div>
+								</div>
+								{% comment %} <div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Type your name</span>
+										<input class="form-control" type="text" placeholder="Type your name here..." required>
+									</div>
+								</div> {% endcomment %}
+								<div class="col-md-12">
+									<div class="form-group">
+										<span class="form-label">Type your car brand & model</span>
+										<input name="brand_model" class="form-control" type="text" placeholder="Type your car brand and model here..." required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Our arrival date</span>
+										<input name="arrival_date" class="form-control" type="date" required>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Our arrival time</span>
+										<input name="arrival_time" class="form-control" type="time" required>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Type your car ID</span>
+										<input name="car_id" class="form-control" type="text" placeholder="Type your car ID here..." required>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Which service you need</span>
+										<select name="the_service" class="form-control" required>
+											<option selected>Which service you need...</option>
+											<option value="FDS">FUEL DELIVERY</option>
+											<option value="EOS">ENGINE OIL SERVICE</option>
+											<option value="CWS">CAR WASH SERVICE</option>
+											<option value="BSS">BATTERY SERIVCE</option>
+											<option value="TS">TYRE SERVICE</option>
+											<option value="TTS">TOW TRUCK SERVICE</option>
+										</select>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+
+
+
+							</div>
+							<div class="row">
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Leave a note here...</span>
+										<textarea name="note" class="form-control" type="t" placeholder=""></textarea>
+									</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-btn">
+											<button class="submit-btn" style="text-decoration: none; text-decoration-line: none; color: white;">Request our repair car NOW</button>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</html>
